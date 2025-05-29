@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head>
+<title></title>
+
+<link type="text/css" rel="stylesheet" href="imagerotator/html/css/basic.css"/>
+<script type="text/javascript" src="imagerotator/html/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="imagerotator/html/js/imagerotator.js"></script>
+<style type= "text/css">
+
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+.viewerbox
+{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 300px;
+}
+
+</style>
+
+<script language="javascript" type="text/javascript">
+
+    function getParameterByName(name) {
+        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+
+	$(document).ready(function(){
+
+        var productId = getParameterByName("sku");
+        var width     = getParameterByName("wd");
+        var height    = getParameterByName("ht");
+
+        jQuery(".viewerbox").css("width", width + "px");
+        jQuery(".viewerbox").css("height", height + "px");
+
+		jQuery("#wr360PlayerId1").rotator({
+            licenseFileURL  : "license.lic",
+			zIndexLayersOn  : true,
+            graphicsPath    : "imagerotator/html/img/basic",
+            configFileURL   : "sharedviews/" + productId + "/" + productId + ".xml"
+        });
+	});
+</script>
+
+</head>
+
+<body>
+    <div class="viewerbox">
+        <div id="wr360PlayerId1" class="wr360_player">
+        </div>
+    </div>
+</body>
+
+</html>
